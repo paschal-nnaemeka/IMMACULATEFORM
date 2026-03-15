@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franciscan of the Immaculate — Retreat Booking</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+<style>
+/* Success Message Styles */
+.success-message {
+  display: none;
+  background: linear-gradient(135deg, #1a5f2a 0%, #2d8a4e 100%);
+  color: white;
+  padding: 40px;
+  border-radius: 15px;
+  margin: 50px auto;
+  max-width: 600px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  animation: slideIn 0.5s ease;
+}
+
+.success-message h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.success-message p {
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+.success-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.back-btn {
+  background: white;
+  color: #1a5f2a;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1em;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: transform 0.3s;
+}
+
+.back-btn:hover {
+  transform: scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+<div class="overlay">
+<h1>FRANCISCAN OF THE IMMACULATE</h1>
+<p>CITY OF THE IMMACULATE — SAGAMU RETREAT CENTER</p>
+<p>Behind Sagamu L.G.A. Secretariat, Old Aiyepe Road,Sagamu</p>
+</div>
+</div>
+
+<div class="container">
+
+<!-- SUCCESS MESSAGE -->
+<div class="success-message" id="successMessage">
+  <div class="success-icon">✓</div>
+  <h2>Booking Submitted Successfully!</h2>
+  <p>Thank you for your retreat booking request.</p>
+  <p>We have received your submission and will contact you shortly.</p>
+  <p><strong>God bless you!</strong></p>
+  <button class="back-btn" onclick="location.reload()">Make Another Booking</button>
+</div>
+
+<!-- FULL RULES -->
+<div class="card" id="rulesCard">
+<h2>📜 Rules, Regulations & Booking Requirements</h2>
+
+<h3>Rules and Regulations</h3>
+<p>Pilgrims are forbidden to enter the Friars' Cloister AND Kitchen area without any formal invitation.</p>
+<p>Pilgrims must participate at the Morning Mass (7:00am) and at the Holy Hour (4:00pm).</p>
+<p>Pilgrims are enjoined to engage themselves in the cleaning of the Church on Saturdays.</p>
+<p>Pilgrims are to maintain an atmosphere of SILENCE throughout the period of their stay.</p>
+<p>Rooms, dormitories, kitchen, toilets, and the compound must be kept clean after use.</p>
+<p>Pilgrims are not allowed to cook in the rooms and in the dormitories.</p>
+<p>Indecency in the mode of dressing is disallowed (Body-hugging dresses that reveal body parts are disallowed — Both Male & Female. Skirts above the knee are not allowed. Males are not allowed to wear boxers walking around the compound.)</p>
+<p>There is no sharing of the same room or dormitories between both sexes.</p>
+<p>Care must be taken in the handling of properties belonging to the host community. Every damage comes with a penalty. (The vandalization of plants and animals in the community will be penalized.)</p>
+<p>The Sick or anyone under hard medical or any form of drugs are advised to stay back.</p>
+<p><strong>NB:</strong> The Friars are not to be held responsible for any discomfort or poor service when there is a breach in the above-mentioned Instructions, Guidelines, Rules and Regulations.</p>
+
+<h3>Booking Requirements</h3>
+<p>Every booking is to be made at least 5 days prior to the arrival of the pilgrims.</p>
+<p>Introduction/Recommendation from the parish priest/director/Chaplain of the Association must be submitted prior to or on arrival of any Group. (This is very necessary.)</p>
+
+<h3>Appreciation</h3>
+<p>Since our community is a poor Community, we beg Pilgrims to generously appreciate our works and mission. Food items such as Rice, Beans, Oil, and any other food items, along with tokens, will be highly appreciated.</p>
+
+<h3>Pricing</h3>
+<p>Single Room: ₦3,000 per night</p>
+
+<p>Meal per individual: ₦800 per meal (optional — groups can self-cater)</p>
+<p>Diesel (groups of 50+): 50 Litres per night</p>
+
+<h3>Personal Items to Bring</h3>
+<ul>
+<li>Wrapper for Cold</li>
+<li>Personal Toiletries</li>
+<li>Personal Bed Spread (if coming in a group)</li>
+</ul>
+
+<label>
+<input type="checkbox" id="agree"> I have read and understood
+</label>
+</div>
+
+<!-- FORM -->
+<form action="https://formsubmit.co/ffiavemariab    @gmail.com"
+method="POST"
+enctype="multipart/form-data"
+id="bookingForm"                                             
+style="display:none;"
+target="hiddenFrame">
+
+<!-- FormSubmit settings -->
+<input type="hidden" name="_subject" value="New Retreat Booking Submission">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_next" value="">
+
+<!-- SECTION 1: Applicant Info (includes Date) -->
+<div class="card">
+<div class="section-title">
+<div class="number">1</div>
+<h3>Applicant Information</h3>
+</div>
+
+<label>Full Name</label>
+<input type="text" placeholder="John Paul" name="full_name" required>
+
+<label>Parish Name</label>
+<input type="text" placeholder="St. Mary Catholic Church" name="parish_name" required>
+
+<label>Diocese</label>
+<input type="text" placeholder="Iperu Diocese" name="diocese" required>
+
+<label>Phone Number</label>
+<input type="text" placeholder="+234 801 234 5678" name="phone_number" required>
+
+<label>Retreat Date</label>
+<input type="date" id="datePicker" name="retreat_date" required>
+
+<label>Parish Priest/Chaplain Recommendation</label>
+<input type="file" id="fileUpload" name="recommendation_letter" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required>
+<div class="preview" id="preview"></div>
+<div class="warning" id="warning">⚠️ Please upload recommendation letter</div>
+
+<label>Retreat Program Upload</label>
+<input type="file" id="retreatProgramUpload" name="retreat_program" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required>
+<div class="preview" id="retreatProgramPreview"></div>
+<div class="warning" id="retreatProgramWarning">⚠️ Please upload retreat program</div>
+</div>
+
+<!-- SECTION 2: Retreat Category -->
+<div class="card">
+<div class="section-title">
+<div class="number">2</div>
+<h3>Retreat Category</h3>
+</div>
+
+<label>Type of Retreat:</label><br>
+<input type="radio" name="retreat_type" value="Personal" class="retreatType"> Personal Retreat<br>
+<input type="radio" name="retreat_type" value="Group" class="retreatType"> Group Retreat<br>
+<input type="text" id="groupName" name="group_name" placeholder="Group Name" style="display:none; margin-top:5px;">
+
+<label>Number of Participants:</label><br>
+<input type="radio" name="participants" value="1-5" class="participants"> 1–5<br>
+<input type="radio" name="participants" value="5-10" class="participants"> 5–10<br>
+<input type="radio" name="participants" value="10-15" class="participants"> 10–15<br>
+<input type="radio" name="participants" value="15-20" class="participants"> 15–20<br>
+<input type="radio" name="participants" value="Other" class="participants"> Other
+<input type="text" id="participantsOther" name="participants_other" placeholder="Specify number" style="display:none; margin-top:5px;">
+</div>
+
+<!-- SECTION 3: Length of Stay -->
+<div class="card">
+<div class="section-title">
+<div class="number">3</div>
+<h3>Length of Stay</h3>
+</div>
+
+<input type="radio" name="length_of_stay" value="One day" class="lengthStay"> One day<br>
+<input type="radio" name="length_of_stay" value="Weekend (Fri-Sun)" class="lengthStay"> Weekend (Fri–Sun)<br>
+<input type="radio" name="length_of_stay" value="3 Days" class="lengthStay"> 3 Days<br>
+<input type="radio" name="length_of_stay" value="1 Week" class="lengthStay"> 1 Week<br>
+<input type="radio" name="length_of_stay" value="Other" class="lengthStay"> Other
+<input type="text" id="lengthOther" name="length_other" placeholder="Specify length" style="display:none; margin-top:5px;">
+</div>
+
+<!-- SECTION 4: Purpose of Retreat -->
+<div class="card">
+<div class="section-title">
+<div class="number">4</div>
+<h3>Purpose of Retreat</h3>
+</div>
+
+<input type="checkbox" name="purpose" value="Personal Prayer"> Personal Prayer<br>
+<input type="checkbox" name="purpose" value="Silent Prayer"> Silent Prayer<br>
+<input type="checkbox" name="purpose" value="Spiritual Direction"> Spiritual Direction<br>
+<input type="checkbox" name="purpose" value="Discernment"> Discernment<br>
+<input type="checkbox" name="purpose" value="Group Recollection"> Group Recollection<br>
+<input type="checkbox" name="purpose" value="Seminar/Workshop"> Seminar/Workshop<br>
+<input type="checkbox" name="purpose" value="Thanksgiving"> Thanksgiving<br>
+<input type="checkbox" name="purpose" value="Other" id="purposeOtherCheck"> Other
+<input type="text" id="purposeOther" name="purpose_other" placeholder="Specify purpose" style="display:none; margin-top:5px;">
+</div>
+
+<!-- SECTION 5: Spiritual Intentions -->
+<div class="card">
+<div class="section-title">
+<div class="number">5</div>
+<h3>Spiritual Intentions</h3>
+</div>
+
+<textarea name="spiritual_intentions" placeholder="Write your spiritual intentions here..." rows="4"></textarea>
+</div>
+
+<!-- SECTION 6: Accommodation & Logistics -->
+<div class="card">
+<div class="section-title">
+<div class="number">6</div>
+<h3>Accommodation & Logistics</h3>
+</div>
+
+<label>Will you need accommodation?</label><br>
+<input type="radio" name="accommodation" value="Yes"> Yes
+<input type="radio" name="accommodation" value="No"> No<br><br>
+
+<label>Will meal be required?</label><br>
+<input type="radio" name="meal" value="Yes"> Yes
+<input type="radio" name="meal" value="No"> No<br><br>
+
+<label>Any medical or special needs we should be aware of?</label>
+<textarea name="medical_needs" rows="3"></textarea>
+</div>
+
+<button type="submit" id="submitBtn" disabled>Submit Booking</button>
+
+</form>
+
+<!-- Hidden iframe for form submission -->
+<iframe name="hiddenFrame" style="display:none;"></iframe>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+const agree = document.getElementById("agree");
+const bookingForm = document.getElementById("bookingForm");
+const file = document.getElementById("fileUpload");
+const preview = document.getElementById("preview");
+const warning = document.getElementById("warning");
+const retreatProgramFile = document.getElementById("retreatProgramUpload");
+const retreatProgramPreview = document.getElementById("retreatProgramPreview");
+const retreatProgramWarning = document.getElementById("retreatProgramWarning");
+const submitBtn = document.getElementById("submitBtn");
+const datePicker = document.getElementById("datePicker");
+const successMessage = document.getElementById("successMessage");
+const rulesCard = document.getElementById("rulesCard");
+
+// Text inputs
+const fullName = document.querySelector('input[name="full_name"]');
+const parishName = document.querySelector('input[name="parish_name"]');
+const diocese = document.querySelector('input[name="diocese"]');
+const phoneNumber = document.querySelector('input[name="phone_number"]');
+
+// Retreat Type & Group Name
+const retreatRadios = document.querySelectorAll(".retreatType");
+const groupName = document.getElementById("groupName");
+
+// Participants
+const participantsRadios = document.querySelectorAll(".participants");
+const participantsOther = document.getElementById("participantsOther");
+
+// Length of stay
+const lengthRadios = document.querySelectorAll(".lengthStay");
+const lengthOther = document.getElementById("lengthOther");
+
+// Purpose
+const purposeOtherCheck = document.getElementById("purposeOtherCheck");
+const purposeOther = document.getElementById("purposeOther");
+
+// Show form after rules accepted
+agree.addEventListener("change", () => {
+if(agree.checked){
+bookingForm.style.display = "block";
+} else {
+bookingForm.style.display = "none";
+}
+validate();
+});
+
+// File upload preview
+file.addEventListener("change", () => {
+if(file.files.length>0){
+preview.innerHTML = "✅ " + file.files[0].name + " selected";
+warning.style.display = "none";
+}
+validate();
+});
+
+// Retreat Program file preview
+retreatProgramFile.addEventListener("change", () => {
+if(retreatProgramFile.files.length > 0){
+
+retreatProgramPreview.innerHTML = "✅ " + retreatProgramFile.files[0].name + " selected";
+retreatProgramWarning.style.display = "none";
+}
+validate();
+});
+
+// Date picker validation
+datePicker.addEventListener("change", validate);
+
+// Text input validation
+fullName.addEventListener("input", validate);
+parishName.addEventListener("input", validate);
+diocese.addEventListener("input", validate);
+phoneNumber.addEventListener("input", validate);
+
+// Retreat type conditional
+retreatRadios.forEach(radio => {
+radio.addEventListener("change", () => {
+if(radio.value === "Group" && radio.checked){
+groupName.style.display = "block";
+groupName.required = true;
+} else {
+groupName.style.display = "none";
+groupName.required = false;
+}
+});
+});
+
+// Participants conditional
+participantsRadios.forEach(radio => {
+radio.addEventListener("change", () => {
+if(radio.value === "Other" && radio.checked){
+participantsOther.style.display = "block";
+participantsOther.required = true;
+} else {
+participantsOther.style.display = "none";
+participantsOther.required = false;
+}
+});
+});
+
+// Length of stay conditional
+lengthRadios.forEach(radio => {
+radio.addEventListener("change", () => {
+if(radio.value === "Other" && radio.checked){
+lengthOther.style.display = "block";
+lengthOther.required = true;
+} else {
+lengthOther.style.display = "none";
+lengthOther.required = false;
+}
+});
+});
+
+// Purpose conditional
+purposeOtherCheck.addEventListener("change", () => {
+if(purposeOtherCheck.checked){
+purposeOther.style.display = "block";
+purposeOther.required = true;
+} else {
+purposeOther.style.display = "none";
+purposeOther.required = false;
+}
+});
+
+// Validation - blocks submit if ANYTHING is missing
+function validate(){
+const isFullNameFilled = fullName.value.trim() !== "";
+const isParishNameFilled = parishName.value.trim() !== "";
+const isDioceseFilled = diocese.value.trim() !== "";
+const isPhoneNumberFilled = phoneNumber.value.trim() !== "";
+const isDateSelected = datePicker.value !== "";
+const isRecommendationUploaded = file.files.length > 0;
+const isRetreatProgramUploaded = retreatProgramFile.files.length > 0;
+const isRulesAccepted = agree.checked;
+
+if(isRulesAccepted && 
+   isFullNameFilled && 
+   isParishNameFilled && 
+   isDioceseFilled && 
+   isPhoneNumberFilled && 
+   isDateSelected && 
+   isRecommendationUploaded && 
+   isRetreatProgramUploaded){
+submitBtn.disabled = false;
+} else {
+submitBtn.disabled = true;
+}
+}
+
+// Form submission - show success message
+bookingForm.addEventListener("submit", (e) => {
+  // Hide form and rules
+  bookingForm.style.display = "none";
+  rulesCard.style.display = "none";
+  
+  // Show success message
+  successMessage.style.display = "block";
+  
+  // Scroll to top
+  window.scrollTo(0, 0);
+});
+
+});
+</script>
+
+</body>
+</html
